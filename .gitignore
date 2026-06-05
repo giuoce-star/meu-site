@@ -1,0 +1,12 @@
+node_modules/
+desktop.ini
+*.ps1
+server.js
+fix_icons.py
+remove_bg.py
+remove_bird.py
+remove_icons.py
+remove_shells.py
+index-novo.html
+hbb.jpeg
+download (11).jpg
