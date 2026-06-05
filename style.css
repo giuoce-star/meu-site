@@ -118,7 +118,7 @@ strong { font-weight: 700; color: var(--black); }
   isolation: isolate;
 }
 
-/* Camada holográfica — fica sobre o fundo mas mistura com o texto */
+/* Camada holográfica perolada — sempre visível, move com o cursor */
 .btn-primary::before,
 .btn-ghost::before,
 .btn-nav::before {
@@ -127,23 +127,19 @@ strong { font-weight: 700; color: var(--black); }
   inset: 0;
   border-radius: inherit;
   background:
-    radial-gradient(circle at var(--mx) var(--my),
-      rgba(255,255,255,0.5) 0%,
-      transparent 50%),
     linear-gradient(var(--holo-angle),
-      rgba(255, 80, 140, 0.8) 0%,
-      rgba(120, 80, 255, 0.75) 25%,
-      rgba(0, 210, 230, 0.75) 50%,
-      rgba(255, 180, 50, 0.75) 75%,
-      rgba(255, 80, 140, 0.8) 100%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
+      rgba(255, 180, 220, 0.55) 0%,
+      rgba(200, 185, 255, 0.55) 25%,
+      rgba(180, 225, 255, 0.50) 50%,
+      rgba(255, 215, 175, 0.55) 75%,
+      rgba(255, 175, 225, 0.55) 100%);
+  transition: background 0.1s linear;
   pointer-events: none;
   z-index: 0;
   mix-blend-mode: screen;
 }
 
-/* Brilho specular no ponto do cursor */
+/* Brilho specular que segue o cursor */
 .btn-primary::after,
 .btn-ghost::after,
 .btn-nav::after {
@@ -152,22 +148,13 @@ strong { font-weight: 700; color: var(--black); }
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(circle at var(--mx) var(--my),
-    rgba(255,255,255,0.65) 0%,
-    rgba(255,255,255,0.08) 35%,
-    transparent 65%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
+    rgba(255,255,255,0.75) 0%,
+    rgba(255,255,255,0.15) 35%,
+    transparent 60%);
+  transition: background 0.05s linear;
   pointer-events: none;
   z-index: 0;
 }
-
-.btn-primary:hover::before,
-.btn-ghost:hover::before,
-.btn-nav:hover::before { opacity: 1; }
-
-.btn-primary:hover::after,
-.btn-ghost:hover::after,
-.btn-nav:hover::after { opacity: 1; }
 
 /* Texto fica acima do efeito holográfico */
 .btn-primary,
@@ -192,7 +179,6 @@ strong { font-weight: 700; color: var(--black); }
 .btn-primary span { position: relative; z-index: 3; }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(230,60,94,0.35);
 }
 
 .btn-ghost {
@@ -200,12 +186,10 @@ strong { font-weight: 700; color: var(--black); }
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: var(--black);
-  border: 1.5px solid rgba(0,0,0,0.15);
+  border: 1.5px solid rgba(0,0,0,0.12);
 }
 .btn-ghost:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(120,80,255,0.2);
-  border-color: transparent;
 }
 
 .btn-full { width: 100%; text-align: center; }
@@ -243,8 +227,14 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
 .deco { position: absolute; pointer-events: none; z-index: 0; }
 .deco img { opacity: 0.5; }
 .deco-br { bottom: -40px; right: -20px; width: 220px; }
-.deco-contato { top: -30px; right: 40px; width: 160px; }
-.deco-contato-bl { bottom: -20px; left: 20px; width: 120px; }
+
+/* Ícone do tubo — acima do formulário, lado direito */
+.deco-contato { top: 60px; right: 20px; width: 110px; }
+.deco-contato img { opacity: 0.75; }
+
+/* Pomba — canto inferior esquerdo, grande e sólida */
+.deco-contato-bl { bottom: 0px; left: 0px; width: 200px; }
+.deco-contato-bl img { opacity: 1; }
 
 /* ===== NAV ===== */
 #navbar {
@@ -521,7 +511,6 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
 /* ===== CONTATO ===== */
 #contato {
   position: relative;
-  overflow: hidden;
 }
 
 .contato-cols { align-items: start; }
