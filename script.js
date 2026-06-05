@@ -138,6 +138,25 @@ document.addEventListener('keydown', e => {
   ) e.preventDefault();
 });
 
+// ===== CARROSSEL DE VÍDEOS (drag to scroll) =====
+const videosGrid = document.querySelector('.videos-grid');
+if (videosGrid) {
+  let isDown = false, startX, scrollLeft;
+  videosGrid.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - videosGrid.offsetLeft;
+    scrollLeft = videosGrid.scrollLeft;
+  });
+  videosGrid.addEventListener('mouseleave', () => isDown = false);
+  videosGrid.addEventListener('mouseup', () => isDown = false);
+  videosGrid.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - videosGrid.offsetLeft;
+    videosGrid.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+}
+
 document.getElementById('contato-form').addEventListener('submit', (e) => {
   e.preventDefault();
   const success = document.getElementById('form-success');
