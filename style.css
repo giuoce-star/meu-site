@@ -98,11 +98,10 @@ strong { font-weight: 700; color: var(--black); }
   background: rgba(255, 255, 255, 0.28);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border: none;
   color: var(--black);
-  box-shadow:
-    0 2px 16px rgba(200, 180, 255, 0.18),
-    inset 0 1px 0 rgba(255,255,255,0.7);
+  font-weight: 700;
+  box-shadow: 0 2px 16px rgba(200, 180, 255, 0.18);
 }
 
 /* Shimmer perolado — sempre visível, gira com o cursor */
