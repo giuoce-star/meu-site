@@ -549,12 +549,14 @@ footer {
   border-radius: var(--radius);
   padding: clamp(1.5rem, 3vw, 2.25rem);
   display: flex;
-  gap: 1.25rem;
+  flex-direction: column;
+  gap: 0.75rem;
   transition: var(--transition);
 }
 .nicho-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 48px rgba(0,0,0,0.08);
+  border-color: rgba(230,60,94,0.2);
 }
 
 .nicho-highlight {
@@ -565,10 +567,13 @@ footer {
 .nicho-icon {
   font-size: 2rem;
   line-height: 1;
-  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
 }
 
-.nicho-content h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+.nicho-content h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
 .nicho-content p  { font-size: 0.88rem; }
 
 /* ===== VIDEOS ===== */
