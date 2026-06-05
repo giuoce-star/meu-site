@@ -138,9 +138,10 @@ document.addEventListener('keydown', e => {
   ) e.preventDefault();
 });
 
-// ===== CARROSSEL DE VÍDEOS (drag to scroll) =====
+// ===== CARROSSEL DE VÍDEOS (drag to scroll + setas) =====
 const videosGrid = document.querySelector('.videos-grid');
 if (videosGrid) {
+  // Drag to scroll
   let isDown = false, startX, scrollLeft;
   videosGrid.addEventListener('mousedown', (e) => {
     isDown = true;
@@ -154,6 +155,15 @@ if (videosGrid) {
     e.preventDefault();
     const x = e.pageX - videosGrid.offsetLeft;
     videosGrid.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+
+  // Setas
+  const scrollAmount = 240;
+  document.querySelector('.carousel-prev')?.addEventListener('click', () => {
+    videosGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+  document.querySelector('.carousel-next')?.addEventListener('click', () => {
+    videosGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   });
 }
 
