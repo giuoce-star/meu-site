@@ -641,26 +641,56 @@ footer {
 
 .carousel-btn {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: var(--black);
-  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #b06080;
+  font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(200,180,255,0.2);
+  box-shadow:
+    0 2px 16px rgba(210,170,220,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.7);
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
 }
+
+/* shimmer perolado igual aos outros botões */
+.carousel-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255,180,220,0.45) 0%,
+    rgba(210,190,255,0.40) 35%,
+    rgba(175,225,255,0.38) 65%,
+    rgba(255,215,175,0.40) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.carousel-btn svg {
+  position: relative;
+  z-index: 1;
+}
+
 .carousel-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 20px rgba(200,180,255,0.35);
+  transform: scale(1.12);
+  box-shadow:
+    0 6px 24px rgba(210,170,220,0.38),
+    inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 /* Esconde scrollbar mas mantém scroll funcional */
