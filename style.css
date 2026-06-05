@@ -189,8 +189,8 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
 .deco-br img { opacity: 1; }
 
 /* Ícone do tubo — acima do formulário, lado direito */
-.deco-contato { top: 60px; right: 20px; width: 110px; }
-.deco-contato img { opacity: 0.75; }
+.deco-contato { top: 40px; right: 10px; width: 180px; }
+.deco-contato img { opacity: 1; }
 
 /* Pomba — canto inferior esquerdo, grande e harmônica */
 .deco-contato-bl { bottom: 150px; left: 60px; width: 200px; }
