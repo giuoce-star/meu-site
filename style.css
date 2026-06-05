@@ -193,7 +193,7 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
 .deco-contato img { opacity: 0.75; }
 
 /* Pomba — canto inferior esquerdo, grande e harmônica */
-.deco-contato-bl { bottom: 160px; left: 60px; width: 200px; }
+.deco-contato-bl { bottom: 150px; left: 60px; width: 200px; }
 .deco-contato-bl img { opacity: 0.88; }
 
 /* ===== NAV ===== */
@@ -693,21 +693,26 @@ footer {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: none;
+  color: #c2517a;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 200;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 20px rgba(210, 160, 200, 0.30);
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.float-ig:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.22); }
+.float-ig:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(210, 160, 200, 0.45); }
 
 .float-wa {
   bottom: 88px;
-  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #4aaa80;
+  box-shadow: 0 4px 20px rgba(160, 210, 185, 0.30);
 }
+.float-wa:hover { box-shadow: 0 8px 28px rgba(160, 210, 185, 0.45); }
 
 /* ===== SCROLL REVEAL ===== */
 .reveal {
