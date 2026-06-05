@@ -185,7 +185,7 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
 /* ===== DECO ===== */
 .deco { position: absolute; pointer-events: none; z-index: 0; }
 .deco img { opacity: 0.5; }
-.deco-br { bottom: -140px; right: -10px; width: 340px; z-index: 10; }
+.deco-br { bottom: -140px; right: -50px; width: 340px; z-index: 10; }
 .deco-br img { opacity: 1; }
 
 /* Ícone do tubo — acima do formulário, lado direito */
