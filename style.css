@@ -308,18 +308,26 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
   display: block;
   z-index: 2;
   pointer-events: none;
-  animation: star-metallic 3s ease-in-out infinite;
+}
+
+/* Estrelas — layer separada com brilho metálico suave */
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 3;
+  animation: star-metallic 4s ease-in-out infinite;
 }
 
 @keyframes star-metallic {
   0%, 100% {
-    filter: brightness(1) saturate(1) drop-shadow(0 0 0px rgba(255,200,50,0));
+    filter: brightness(1) saturate(1);
+    opacity: 1;
   }
-  40% {
-    filter: brightness(1.25) saturate(1.5) drop-shadow(0 0 6px rgba(255,210,80,0.55));
-  }
-  60% {
-    filter: brightness(1.35) saturate(1.6) drop-shadow(0 0 10px rgba(255,220,100,0.45));
+  50% {
+    filter: brightness(1.4) saturate(1.3) drop-shadow(0 0 5px rgba(255,215,80,0.4));
+    opacity: 0.92;
   }
 }
 
