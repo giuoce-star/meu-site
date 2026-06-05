@@ -172,7 +172,7 @@ document.addEventListener('keydown', e => {
       speed: Math.random() * 0.05 + 0.02,
       rot: Math.random() * 360,
       rotSpeed: (Math.random() - 0.5) * 0.06,
-      op: Math.random() * 0.35 + 0.25,
+      op: Math.random() * 0.15 + 0.85,
       size,
     });
   }
