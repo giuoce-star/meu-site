@@ -88,7 +88,7 @@ ul { list-style: none; }
 
 /* ===== TYPOGRAPHY ===== */
 h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; }
-h1 { font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 900; letter-spacing: -0.02em; }
+h1 { font-size: clamp(1.9rem, 4vw, 3.6rem); font-weight: 900; letter-spacing: -0.02em; }
 h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; letter-spacing: -0.02em; }
 h3 { font-size: 1.25rem; font-weight: 700; }
 p  { color: var(--gray); line-height: 1.75; }
@@ -217,9 +217,9 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
 .deco-contato { top: 60px; right: 20px; width: 110px; }
 .deco-contato img { opacity: 0.75; }
 
-/* Pomba — canto inferior esquerdo, grande e sólida */
-.deco-contato-bl { bottom: 0px; left: 0px; width: 200px; }
-.deco-contato-bl img { opacity: 1; }
+/* Pomba — canto inferior esquerdo, grande e harmônica */
+.deco-contato-bl { bottom: 80px; left: 10px; width: 200px; }
+.deco-contato-bl img { opacity: 0.88; }
 
 /* ===== NAV ===== */
 #navbar {
@@ -247,7 +247,7 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
 
 .logo {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 900;
   color: var(--black);
   letter-spacing: -0.02em;
