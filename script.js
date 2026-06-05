@@ -151,34 +151,37 @@ document.addEventListener('keydown', e => {
 
   const NUM = 16;
   const flores = [];
+  const section = document.getElementById('nichos');
+
+  function randX() {
+    return Math.random() * (section.offsetWidth + 80) - 40;
+  }
 
   for (let i = 0; i < NUM; i++) {
     const img = document.createElement('img');
     img.src = floreSrcs[i % floreSrcs.length];
     img.className = 'flor-item';
     const size = Math.random() * 55 + 35;
-    img.style.width = size + 'px';
-    img.style.position = 'absolute';
+    img.style.cssText = `width:${size}px; position:absolute; top:0; left:0;`;
     canvas.appendChild(img);
 
     flores.push({
       el: img,
-      x: Math.random() * 110 - 5,           // % horizontal
-      y: Math.random() * -120 - 10,          // começa acima
-      speed: Math.random() * 0.04 + 0.025,   // px por ms
+      x: randX(),
+      y: Math.random() * -section.offsetHeight,  // distribui na section inicialmente
+      speed: Math.random() * 0.05 + 0.02,
       rot: Math.random() * 360,
-      rotSpeed: (Math.random() - 0.5) * 0.04,
+      rotSpeed: (Math.random() - 0.5) * 0.06,
       op: Math.random() * 0.35 + 0.25,
       size,
     });
   }
 
-  const section = document.getElementById('nichos');
   let last = null;
 
   function tick(ts) {
     if (!last) last = ts;
-    const dt = ts - last;
+    const dt = Math.min(ts - last, 50);
     last = ts;
     const h = section.offsetHeight;
 
@@ -187,9 +190,9 @@ document.addEventListener('keydown', e => {
       f.rot += f.rotSpeed * dt;
       if (f.y > h + 80) {
         f.y = -f.size - 10;
-        f.x = Math.random() * 110 - 5;
+        f.x = randX();
       }
-      f.el.style.transform = `translate(${f.x}%, ${f.y}px) rotate(${f.rot}deg)`;
+      f.el.style.transform = `translate(${f.x}px, ${f.y}px) rotate(${f.rot}deg)`;
       f.el.style.opacity = f.op;
     });
 
