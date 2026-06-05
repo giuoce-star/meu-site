@@ -583,6 +583,34 @@ footer {
 /* ===== NICHOS ===== */
 #nichos { position: relative; }
 
+/* Cascata de flores */
+.flores-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.flor-item {
+  position: absolute;
+  top: -120px;
+  pointer-events: none;
+  opacity: 0;
+  animation: flor-cair linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes flor-cair {
+  0%   { transform: translateY(0) rotate(0deg) scale(var(--s)); opacity: 0; }
+  8%   { opacity: var(--op); }
+  90%  { opacity: var(--op); }
+  100% { transform: translateY(calc(100vh + 140px)) rotate(var(--rot)) scale(var(--s)); opacity: 0; }
+}
+
+/* Garante que o conteúdo dos nichos fica sobre as flores */
+#nichos .container { position: relative; z-index: 1; }
+
 .section-sub {
   font-size: 1rem;
   color: var(--gray);

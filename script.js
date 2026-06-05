@@ -138,6 +138,45 @@ document.addEventListener('keydown', e => {
   ) e.preventDefault();
 });
 
+// ===== CASCATA DE FLORES (seção nichos) =====
+(function() {
+  const canvas = document.getElementById('flores-canvas');
+  if (!canvas) return;
+
+  const flores = [
+    'flores/flor_1.png','flores/flor_2.png','flores/flor_3.png',
+    'flores/flor_4.png','flores/flor_5.png','flores/flor_6.png',
+    'flores/flor_7.png','flores/flor_8.png','flores/flor_9.png','flores/flor_10.png'
+  ];
+
+  const NUM = 18;
+
+  for (let i = 0; i < NUM; i++) {
+    const img = document.createElement('img');
+    img.src = flores[i % flores.length];
+    img.className = 'flor-item';
+
+    const size  = Math.random() * 60 + 40;       // 40–100px
+    const left  = Math.random() * 110 - 5;       // -5% a 105%
+    const dur   = Math.random() * 8 + 10;        // 10–18s
+    const delay = Math.random() * -18;           // offset inicial
+    const rot   = (Math.random() * 360) + 'deg';
+    const op    = (Math.random() * 0.35 + 0.25).toFixed(2); // 0.25–0.60
+
+    img.style.cssText = `
+      width: ${size}px;
+      left: ${left}%;
+      --s: 1;
+      --rot: ${rot};
+      --op: ${op};
+      animation-duration: ${dur}s;
+      animation-delay: ${delay}s;
+    `;
+
+    canvas.appendChild(img);
+  }
+})();
+
 // ===== CARROSSEL DE VÍDEOS (drag to scroll + setas) =====
 const videosGrid = document.querySelector('.videos-grid');
 if (videosGrid) {
