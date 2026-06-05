@@ -143,38 +143,60 @@ document.addEventListener('keydown', e => {
   const canvas = document.getElementById('flores-canvas');
   if (!canvas) return;
 
-  const flores = [
+  const floreSrcs = [
     'flores/flor_1.png','flores/flor_2.png','flores/flor_3.png',
     'flores/flor_4.png','flores/flor_5.png','flores/flor_6.png',
     'flores/flor_7.png','flores/flor_8.png','flores/flor_9.png','flores/flor_10.png'
   ];
 
-  const NUM = 18;
+  const NUM = 16;
+  const flores = [];
 
   for (let i = 0; i < NUM; i++) {
     const img = document.createElement('img');
-    img.src = flores[i % flores.length];
+    img.src = floreSrcs[i % floreSrcs.length];
     img.className = 'flor-item';
-
-    const size  = Math.random() * 60 + 40;       // 40–100px
-    const left  = Math.random() * 110 - 5;       // -5% a 105%
-    const dur   = Math.random() * 8 + 10;        // 10–18s
-    const delay = Math.random() * -18;           // offset inicial
-    const rot   = (Math.random() * 360) + 'deg';
-    const op    = (Math.random() * 0.35 + 0.25).toFixed(2); // 0.25–0.60
-
-    img.style.cssText = `
-      width: ${size}px;
-      left: ${left}%;
-      --s: 1;
-      --rot: ${rot};
-      --op: ${op};
-      animation-duration: ${dur}s;
-      animation-delay: ${delay}s;
-    `;
-
+    const size = Math.random() * 55 + 35;
+    img.style.width = size + 'px';
+    img.style.position = 'absolute';
     canvas.appendChild(img);
+
+    flores.push({
+      el: img,
+      x: Math.random() * 110 - 5,           // % horizontal
+      y: Math.random() * -120 - 10,          // começa acima
+      speed: Math.random() * 0.04 + 0.025,   // px por ms
+      rot: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 0.04,
+      op: Math.random() * 0.35 + 0.25,
+      size,
+    });
   }
+
+  const section = document.getElementById('nichos');
+  let last = null;
+
+  function tick(ts) {
+    if (!last) last = ts;
+    const dt = ts - last;
+    last = ts;
+    const h = section.offsetHeight;
+
+    flores.forEach(f => {
+      f.y += f.speed * dt;
+      f.rot += f.rotSpeed * dt;
+      if (f.y > h + 80) {
+        f.y = -f.size - 10;
+        f.x = Math.random() * 110 - 5;
+      }
+      f.el.style.transform = `translate(${f.x}%, ${f.y}px) rotate(${f.rot}deg)`;
+      f.el.style.opacity = f.op;
+    });
+
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
 })();
 
 // ===== CARROSSEL DE VÍDEOS (drag to scroll + setas) =====
