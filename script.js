@@ -168,12 +168,17 @@ document.addEventListener('keydown', e => {
     flores.push({
       el: img,
       x: randX(),
-      y: Math.random() * -section.offsetHeight,  // distribui na section inicialmente
-      speed: Math.random() * 0.05 + 0.02,
+      y: Math.random() * -section.offsetHeight,
+      speed: Math.random() * 0.03 + 0.015,       // queda mais lenta
       rot: Math.random() * 360,
-      rotSpeed: (Math.random() - 0.5) * 0.06,
+      rotSpeed: (Math.random() - 0.5) * 0.03,    // rotação suave
       op: Math.random() * 0.15 + 0.85,
       size,
+      // balanço lateral natural
+      swayAmp: Math.random() * 28 + 12,           // amplitude do balanço (px)
+      swayFreq: Math.random() * 0.0012 + 0.0006,  // frequência do balanço
+      swayOffset: Math.random() * Math.PI * 2,    // fase inicial aleatória
+      t: Math.random() * 10000,                   // tempo acumulado
     });
   }
 
@@ -186,13 +191,19 @@ document.addEventListener('keydown', e => {
     const h = section.offsetHeight;
 
     flores.forEach(f => {
+      f.t += dt;
       f.y += f.speed * dt;
       f.rot += f.rotSpeed * dt;
+
+      // balanço lateral suave com seno
+      const sway = Math.sin(f.t * f.swayFreq + f.swayOffset) * f.swayAmp;
+
       if (f.y > h + 80) {
         f.y = -f.size - 10;
         f.x = randX();
       }
-      f.el.style.transform = `translate(${f.x}px, ${f.y}px) rotate(${f.rot}deg)`;
+
+      f.el.style.transform = `translate(${f.x + sway}px, ${f.y}px) rotate(${f.rot}deg)`;
       f.el.style.opacity = f.op;
     });
 
