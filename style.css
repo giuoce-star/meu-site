@@ -33,52 +33,28 @@ body::before {
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%,  rgba(255, 180, 220, 0.85) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 20%,  rgba(200, 185, 255, 0.75) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 55% at 60% 70%,  rgba(255, 215, 175, 0.75) 0%, transparent 60%),
-    radial-gradient(ellipse 55% 45% at 10% 80%,  rgba(180, 225, 255, 0.65) 0%, transparent 55%),
-    radial-gradient(ellipse 65% 50% at 90% 90%,  rgba(255, 175, 225, 0.70) 0%, transparent 60%),
-    linear-gradient(135deg, #fffafd 0%, #fdf6ff 25%, #fff8f5 50%, #f8fbff 75%, #fffafd 100%);
-  animation: pearl-shift 12s ease-in-out infinite alternate;
+    radial-gradient(ellipse 70% 50% at 0% 20%,   rgba(255, 180, 220, 0.72) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 45% at 100% 10%,  rgba(200, 185, 255, 0.65) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 50% at 100% 80%,  rgba(255, 215, 175, 0.65) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 0%  85%,   rgba(180, 225, 255, 0.60) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 50%,   rgba(255, 200, 230, 0.35) 0%, transparent 60%),
+    linear-gradient(160deg, #fff8fc 0%, #fdf5ff 30%, #fff9f5 60%, #f8fbff 100%);
+  animation: pearl-shift 18s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
 @keyframes pearl-shift {
   0% {
-    background:
-      radial-gradient(ellipse 80% 60% at 20% 10%,  rgba(255, 180, 220, 0.85) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 80% 20%,  rgba(200, 185, 255, 0.75) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 55% at 60% 70%,  rgba(255, 215, 175, 0.75) 0%, transparent 60%),
-      radial-gradient(ellipse 55% 45% at 10% 80%,  rgba(180, 225, 255, 0.65) 0%, transparent 55%),
-      radial-gradient(ellipse 65% 50% at 90% 90%,  rgba(255, 175, 225, 0.70) 0%, transparent 60%),
-      linear-gradient(135deg, #fffafd 0%, #fdf6ff 25%, #fff8f5 50%, #f8fbff 75%, #fffafd 100%);
+    opacity: 1;
+    filter: hue-rotate(0deg) brightness(1);
   }
-  33% {
-    background:
-      radial-gradient(ellipse 70% 55% at 50% 5%,   rgba(200, 185, 255, 0.80) 0%, transparent 60%),
-      radial-gradient(ellipse 65% 50% at 90% 40%,  rgba(255, 185, 215, 0.75) 0%, transparent 55%),
-      radial-gradient(ellipse 75% 60% at 15% 60%,  rgba(255, 210, 180, 0.70) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 45% at 70% 85%,  rgba(180, 230, 255, 0.65) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 50% at 5%  30%,  rgba(255, 180, 230, 0.70) 0%, transparent 60%),
-      linear-gradient(135deg, #fdf6ff 0%, #fff8fd 25%, #f8fbff 50%, #fffaf5 75%, #fdf6ff 100%);
-  }
-  66% {
-    background:
-      radial-gradient(ellipse 75% 60% at 70% 15%,  rgba(255, 175, 215, 0.80) 0%, transparent 60%),
-      radial-gradient(ellipse 55% 50% at 10% 35%,  rgba(190, 195, 255, 0.75) 0%, transparent 55%),
-      radial-gradient(ellipse 65% 55% at 85% 65%,  rgba(255, 220, 170, 0.70) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 45% at 40% 90%,  rgba(175, 225, 255, 0.65) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 50% at 55% 45%,  rgba(255, 185, 220, 0.60) 0%, transparent 60%),
-      linear-gradient(135deg, #fff8fb 0%, #f8f6ff 25%, #fffbf5 50%, #f5faff 75%, #fff8fb 100%);
+  50% {
+    opacity: 0.95;
+    filter: hue-rotate(8deg) brightness(1.02);
   }
   100% {
-    background:
-      radial-gradient(ellipse 80% 60% at 30% 80%,  rgba(255, 185, 215, 0.80) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 55% at 75% 10%,  rgba(205, 180, 255, 0.75) 0%, transparent 55%),
-      radial-gradient(ellipse 70% 50% at 5%  20%,  rgba(255, 210, 180, 0.70) 0%, transparent 60%),
-      radial-gradient(ellipse 55% 50% at 60% 50%,  rgba(185, 220, 255, 0.65) 0%, transparent 55%),
-      radial-gradient(ellipse 65% 55% at 90% 75%,  rgba(255, 175, 230, 0.70) 0%, transparent 60%),
-      linear-gradient(135deg, #fdf8ff 0%, #fff5fd 25%, #f5f8ff 50%, #fffaf8 75%, #fdf8ff 100%);
+    opacity: 1;
+    filter: hue-rotate(-6deg) brightness(1);
   }
 }
 
@@ -210,7 +186,7 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
 /* ===== DECO ===== */
 .deco { position: absolute; pointer-events: none; z-index: 0; }
 .deco img { opacity: 0.5; }
-.deco-br { bottom: -40px; right: -20px; width: 320px; }
+.deco-br { bottom: -140px; right: -10px; width: 340px; z-index: 10; }
 .deco-br img { opacity: 1; }
 
 /* Ícone do tubo — acima do formulário, lado direito */
@@ -297,7 +273,6 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
   gap: clamp(2rem, 5vw, 4rem);
   padding-top: 5rem;
   position: relative;
-  overflow: hidden;
 }
 
 .hero-content {
