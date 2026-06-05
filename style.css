@@ -193,7 +193,7 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
 .deco-contato img { opacity: 1; }
 
 /* Pomba — canto inferior esquerdo, grande e harmônica */
-.deco-contato-bl { bottom: 70px; left: 60px; width: 200px; }
+.deco-contato-bl { bottom: 30px; left: 60px; width: 200px; }
 .deco-contato-bl img { opacity: 0.88; }
 
 /* ===== NAV ===== */
