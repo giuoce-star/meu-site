@@ -308,6 +308,19 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
   display: block;
   z-index: 2;
   pointer-events: none;
+  animation: star-metallic 3s ease-in-out infinite;
+}
+
+@keyframes star-metallic {
+  0%, 100% {
+    filter: brightness(1) saturate(1) drop-shadow(0 0 0px rgba(255,200,50,0));
+  }
+  40% {
+    filter: brightness(1.25) saturate(1.5) drop-shadow(0 0 6px rgba(255,210,80,0.55));
+  }
+  60% {
+    filter: brightness(1.35) saturate(1.6) drop-shadow(0 0 10px rgba(255,220,100,0.45));
+  }
 }
 
 /* Foto posicionada dentro da janela do frame polaroid — valores medidos pixel a pixel */
