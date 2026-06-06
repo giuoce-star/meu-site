@@ -1000,8 +1000,11 @@ footer {
     display: flex;
     justify-content: center;
     padding: 0 1.5rem 1rem;
+    order: -1; /* foto aparece antes do texto no mobile */
   }
-  .hero-card { max-width: 280px; }
+  .hero-card { max-width: 260px; width: 260px; }
+  .hero-frame { width: 260px; display: block; }
+  .hero-stars { width: 260px; }
 
   /* Sobre */
   .two-col { grid-template-columns: 1fr; }
