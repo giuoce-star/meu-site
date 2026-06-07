@@ -207,8 +207,10 @@ h1, .hero-sub, .hero-ctas, .hero-card, .deco-br img,
 .marquee-wrap {
   width: 100%;
   overflow: hidden;
-  background: linear-gradient(135deg, #e63c5e, #ff8c42);
-  padding: 0.85rem 0;
+  background: transparent;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 0;
   position: relative;
   z-index: 5;
 }
@@ -222,12 +224,12 @@ h1, .hero-sub, .hero-ctas, .hero-card, .deco-br img,
 .marquee-track span {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--gray);
   white-space: nowrap;
   padding-right: 3rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 @keyframes marquee-scroll {
