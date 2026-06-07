@@ -1,7 +1,10 @@
-// Navbar scroll
+// ===== GSAP SETUP =====
+gsap.registerPlugin(ScrollTrigger);
+
+// ===== NAVBAR =====
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  navbar.classList.toggle('scrolled', window.scrollY > 80);
 });
 
 // Hamburger menu
@@ -10,20 +13,94 @@ const navLinks = document.querySelector('.nav-links');
 hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-// Scroll reveal
-const reveals = document.querySelectorAll('section > *, .card, .projeto-card, .stat');
-reveals.forEach(el => el.classList.add('reveal'));
+// ===== HERO — ENTRADA CINEMATOGRÁFICA =====
+const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 60);
-      observer.unobserve(entry.target);
-    }
+heroTl
+  .from('.hero-card', {
+    x: 60, opacity: 0, duration: 1, ease: 'power2.out'
+  }, 0)
+  .from('#hero h1', {
+    y: 40, opacity: 0, duration: 0.9
+  }, 0)
+  .from('.hero-sub', {
+    y: 40, opacity: 0, duration: 0.7
+  }, 0.15)
+  .from('.hero-ctas', {
+    y: 40, opacity: 0, duration: 0.6
+  }, 0.25)
+  .from('.deco-br img', {
+    rotation: -15, opacity: 0, duration: 1.2, ease: 'power1.out'
+  }, 0.3);
+
+// ===== SCROLL ANIMATIONS =====
+
+// Section tags
+gsap.utils.toArray('.section-tag').forEach(el => {
+  gsap.from(el, {
+    x: -30, opacity: 0, duration: 0.5, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 85%' }
   });
-}, { threshold: 0.12 });
+});
 
-reveals.forEach(el => observer.observe(el));
+// H2 dentro de seções
+gsap.utils.toArray('section h2').forEach(el => {
+  gsap.from(el, {
+    y: 30, opacity: 0, duration: 0.7, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 85%' }
+  });
+});
+
+// Cards de nichos, serviços e steps do processo
+gsap.utils.toArray('.nicho-card, .card, .processo-step').forEach((el, i) => {
+  gsap.from(el, {
+    y: 50, opacity: 0, duration: 0.6, ease: 'power2.out',
+    delay: (i % 4) * 0.15,
+    scrollTrigger: { trigger: el, start: 'top 85%' }
+  });
+});
+
+// Sobre — imagem da esquerda
+gsap.from('.sobre-img-wrap', {
+  x: -50, opacity: 0, duration: 0.8, ease: 'power2.out',
+  scrollTrigger: { trigger: '.sobre-img-wrap', start: 'top 85%' }
+});
+
+// Sobre — texto da direita em stagger
+gsap.from('.sobre-text > *', {
+  x: 40, opacity: 0, duration: 0.6, stagger: 0.2, ease: 'power2.out',
+  scrollTrigger: { trigger: '.sobre-text', start: 'top 85%' }
+});
+
+// ===== FLOATING BUTTONS — POP-IN AO SCROLLAR =====
+const floatBtns = gsap.utils.toArray('.float-ig, .float-wa, .float-sub');
+gsap.set(floatBtns, { scale: 0, opacity: 0 });
+
+ScrollTrigger.create({
+  trigger: 'body',
+  start: '300px top',
+  once: true,
+  onEnter: () => {
+    gsap.to(floatBtns, {
+      scale: 1, opacity: 1, duration: 0.5,
+      ease: 'back.out(1.7)', stagger: 0.1
+    });
+  }
+});
+
+// ===== HOVER MICRO-INTERACTIONS =====
+
+// Botões
+document.querySelectorAll('.btn-primary, .btn-ghost').forEach(btn => {
+  btn.addEventListener('mouseenter', () => gsap.to(btn, { scale: 1.04, duration: 0.2 }));
+  btn.addEventListener('mouseleave', () => gsap.to(btn, { scale: 1, duration: 0.2 }));
+});
+
+// Cards
+document.querySelectorAll('.nicho-card, .card').forEach(card => {
+  card.addEventListener('mouseenter', () => gsap.to(card, { y: -6, duration: 0.25, ease: 'power2.out' }));
+  card.addEventListener('mouseleave', () => gsap.to(card, { y: 0, duration: 0.25, ease: 'power2.out' }));
+});
 
 // Counter animation
 const counters = document.querySelectorAll('.stat-num');

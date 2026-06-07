@@ -196,6 +196,45 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
 .deco-contato-bl { bottom: 30px; left: 60px; width: 200px; }
 .deco-contato-bl img { opacity: 0.88; }
 
+/* ===== WILL-CHANGE para elementos animados ===== */
+h1, .hero-sub, .hero-ctas, .hero-card, .deco-br img,
+.section-tag, section h2, .nicho-card, .card, .processo-step,
+.sobre-img-wrap, .float-ig {
+  will-change: transform, opacity;
+}
+
+/* ===== MARQUEE ===== */
+.marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e63c5e, #ff8c42);
+  padding: 0.85rem 0;
+  position: relative;
+  z-index: 5;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee-track span {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  padding-right: 3rem;
+  letter-spacing: 0.05em;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* ===== NAV ===== */
 #navbar {
   position: fixed;
@@ -205,10 +244,11 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
   transition: background 0.3s var(--transition), box-shadow 0.3s;
 }
 #navbar.scrolled {
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 var(--border);
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+  padding: 0.75rem 0;
 }
 
 .nav-inner {
@@ -239,7 +279,21 @@ section { padding: clamp(5rem, 10vw, 8rem) 0; }
   color: var(--gray);
   transition: color 0.2s;
 }
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
 .nav-links a:hover { color: var(--black); }
+.nav-links a:hover::after { width: 100%; }
 
 .btn-nav {
   padding: 0.6rem 1.4rem;
